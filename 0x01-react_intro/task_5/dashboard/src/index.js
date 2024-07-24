@@ -1,10 +1,5 @@
-import './styles.css';
-import myImage from './holberton-logo.jpg';
+import './styles.css';  // Import CSS file
 
-console.log('Hello, Webpack!');
-
-// Create and append an image to the body
-const img = document.createElement('img');
-img.src = myImage;
-document.body.appendChild(img);
+// Simple JavaScript to demonstrate functionality
+document.getElementById('app').innerText = 'Hello from Webpack!';
 
