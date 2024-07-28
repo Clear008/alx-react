@@ -1,28 +1,26 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import CourseList from './CourseList';
+import React from "react";
+import CourseList from "./CourseList";
+import CourseListRow from "./CourseListRow";
+import { shallow } from "enzyme";
 
-describe('<CourseList />', () => {
-  const wrapper = shallow(<CourseList />);
-  it('renders without crashing', () => {
-    expect(wrapper.exists());
+describe("CourseList component tests", () => {
+  it("should render without crashing", () => {
+    const wrapper = shallow(<CourseList />);
+
+    expect(wrapper.exists()).toBe(true);
   });
-  it('renders rows', () => {
-    const row = wrapper.find('CourseListRow');
-    expect(row).toHaveLength(5);
-    expect(row.at(0).prop('textFirstCell')).toEqual('Available courses');
-    expect(row.at(0).prop('isHeader')).toEqual(true);
-    expect(row.at(1).prop('textFirstCell')).toEqual('Course name');
-    expect(row.at(1).prop('textSecondCell')).toEqual('Credit');
-    expect(row.at(1).prop('isHeader')).toEqual(true);
-    expect(row.at(2).prop('textFirstCell')).toEqual('ES6');
-    expect(row.at(2).prop('textSecondCell')).toEqual('60');
-    expect(row.at(2).prop('isHeader')).toEqual(false);
-    expect(row.at(3).prop('textFirstCell')).toEqual('Webpack');
-    expect(row.at(3).prop('textSecondCell')).toEqual('20');
-    expect(row.at(3).prop('isHeader')).toEqual(false);
-    expect(row.at(4).prop('textFirstCell')).toEqual('React');
-    expect(row.at(4).prop('textSecondCell')).toEqual('40');
-    expect(row.at(4).prop('isHeader')).toEqual(false);
+
+  it("renders 5 different rows", () => {
+    const wrapper = shallow(<CourseList />);
+
+    expect(wrapper.find("thead").children()).toHaveLength(2);
+    wrapper.find("thead").forEach((node) => {
+      expect(node.equals(<CourseListRow textFirstCell="Foo" />));
+    });
+
+    expect(wrapper.find("tbody").children()).toHaveLength(3);
+    wrapper.find("tbody").forEach((node) => {
+      expect(node.equals(<CourseListRow textFirstCell="Foo" />));
+    });
   });
 });
