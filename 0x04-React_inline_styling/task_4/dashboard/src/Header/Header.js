@@ -11,6 +11,10 @@ function Header() {
   );
 }
 
+const screenSize = {
+  small: '@media screen and (max-width: 900px)',
+};
+
 const styles = StyleSheet.create({
   header: {
     display: 'flex',
@@ -22,9 +26,15 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: '144px',
+    [screenSize.small]: {
+      width: '240px',
+    },
   },
   title: {
     margin: 0,
+    [screenSize.small]: {
+      fontSize: '40px',
+    },
   },
 });
 
